@@ -1,4 +1,4 @@
-## Title: |cFF8080FFUnhaltedUI|r: Additions
+## Title: |cFF8080FFUnhaltedUI|r Additions
 ## Interface: 100105
 ## Author: Unhalted
 ## Version: 1.0.0
