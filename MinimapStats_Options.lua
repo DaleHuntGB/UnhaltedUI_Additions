@@ -4,7 +4,8 @@ FontOutline = "THINOUTLINE"
 PrimaryFontColor = {1.0, 1.0, 1.0, 1}
 SecondaryFontColor = (RAID_CLASS_COLORS)[select(2, UnitClass("player"))]:GenerateHexColor()
 DebugMode = false
-AddOnName = C_AddOns.GetAddOnMetadata("UnhaltedUI_Additions", "Title")
+GetAddOnName = C_AddOns.GetAddOnMetadata("UnhaltedUI_Additions", "Title")
+AddOnName = "|cFF8080FF"..GetAddOnName.."|r"
 
 -- [[ Font Sizes ]] --
 TimeFrameFontSize = 21

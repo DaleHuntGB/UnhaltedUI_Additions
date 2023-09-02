@@ -1,0 +1,9 @@
+## Title: |cFF8080FFMinimapStats|r Additions
+## Interface: 100105
+## Author: Unhalted
+## Version: 1.0.0
+
+MinimapStats_Config.lua
+MinimapStats_Options.lua
+MinimapStats_Functions.lua
+MinimapStats_Additions.lua

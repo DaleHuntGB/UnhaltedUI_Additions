@@ -11,9 +11,9 @@ end
 
 function FetchDate()
     local CurrentDay = date("%d")
-    local CurrentMonth = date("%m")
+    local CurrentMonth = date("%b")
     local CurrentYear = date("%y")
-    local CurrentDate = CurrentDay .. "/" .. CurrentMonth .. "/" .. CurrentYear
+    local CurrentDate = CurrentDay .. " " .. CurrentMonth .. " " .. CurrentYear
 
     return CurrentDate
 end
@@ -45,9 +45,9 @@ function FetchInstanceDifficulty()
     local _, _, InstanceDifficulty, _, _, _, _, InstanceID, InstanceSize = GetInstanceInfo()
     local KeystoneLevel = C_ChallengeMode.GetActiveKeystoneInfo()
     local InstanceDifficultyIndicator = MinimapCluster.InstanceDifficulty
-    local InstanceIndicator = InstanceDifficultyIndicator and InstanceDifficultyIndicator.Instance or _G.MiniMapInstanceDifficulty
-    local GuildIndicator = InstanceDifficultyIndicator and InstanceDifficultyIndicator.Guild or _G.GuildInstanceDifficulty
-    local ChallengeIndicator = InstanceDifficultyIndicator and InstanceDifficultyIndicator.ChallengeMode or _G.MiniMapChallengeMode
+    local InstanceIndicator = InstanceDifficultyIndicator and InstanceDifficultyIndicator.Instance or _G["MiniMapInstanceDifficulty"]
+    local GuildIndicator = InstanceDifficultyIndicator and InstanceDifficultyIndicator.Guild or _G["GuildInstanceDifficulty"]
+    local ChallengeIndicator = InstanceDifficultyIndicator and InstanceDifficultyIndicator.ChallengeMode or _G["MiniMapChallengeMode"]
     local InGarrison = InstanceID == 1152 or InstanceID == 1153 or InstanceID == 1154 or InstanceID == 1158 or InstanceID == 1159 or InstanceID == 1160
         if InstanceIndicator then 
             InstanceIndicator:ClearAllPoints() 

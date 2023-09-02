@@ -1,9 +1,0 @@
-## Title: |cFF8080FFUnhaltedUI|r Additions
-## Interface: 100105
-## Author: Unhalted
-## Version: 1.0.0
-
-UnhaltedUI_Options.lua
-UnhaltedUI_Functions.lua
-UnhaltedUI_Additions.lua
-UnhaltedUI_Config.lua
