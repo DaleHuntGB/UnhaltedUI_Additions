@@ -1,5 +1,5 @@
-local UnhaltedUI_Additions = CreateFrame("Frame")
-UnhaltedUI_Additions:RegisterEvent("PLAYER_LOGIN")
+local MinimapStats = CreateFrame("Frame")
+MinimapStats:RegisterEvent("PLAYER_LOGIN")
 
 --[[ Time Frame ]]--
 TimeFrame = CreateFrame("Frame", "UH_TimeFrame", Minimap)
@@ -91,18 +91,3 @@ LocationFrame:SetScript("OnEvent", UpdateLocationFrame)
 InformationFrame:SetScript("OnUpdate", UpdateInformationFrame)
 InformationFrame:SetScript("OnMouseDown", function(self, button) if button == "MiddleButton" then ReloadUI() end end)
 InstanceDifficultyFrame:SetScript("OnEvent", UpdateInstanceDifficultyFrame)
-
--- [[ Hide Scroll Bars, Chat Tabs & Font Shadows ]] -- 
-for i=1,NUM_CHAT_WINDOWS do 
-    local ChatFrameScrollBar = _G["ChatFrame"..i].ScrollBar ChatFrameScrollBar:UnregisterAllEvents() ChatFrameScrollBar:SetScript("OnShow", ChatFrameScrollBar.Hide) ChatFrameScrollBar:Hide();
-    local ChatTab = _G["ChatFrame"..i.."Tab"]
-    local ChatFrame = ("ChatFrame%d"):format(i)
-	local ChatFrames = _G[ChatFrame]
-    ChatFrames:SetShadowColor(0, 0, 0, 0)
-	ChatTab:Hide()
-	ChatTab.Show = ChatTab.Hide
-end
-
--- [[ Skip Cinematics ]] --
-MovieFrame_PlayMovie = function(...) GameMovieFinished() print("|cFF8080FFCinematic Skipped|r") end
-CinematicFrame:HookScript("OnShow", function(self, ...)	CinematicFrame_CancelCinematic() print("|cFF8080FFCinematic Skipped|r") end)

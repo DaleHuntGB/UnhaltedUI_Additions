@@ -7,3 +7,4 @@ MinimapStats_Config.lua
 MinimapStats_Options.lua
 MinimapStats_Functions.lua
 MinimapStats_Additions.lua
+UnhaltedUI_Additions.lua
