@@ -3,8 +3,8 @@
 ## Author: Unhalted
 ## Version: 1.0.0
 
-MinimapStats_Config.lua
-MinimapStats_Options.lua
-MinimapStats_Functions.lua
-MinimapStats_Additions.lua
+MinimapStats_Config.lua # Load Config.
+MinimapStats_Options.lua # Load Options / Build SavedVariables Here?
+MinimapStats_Functions.lua # Load Functions.
+MinimapStats.lua # Load Frames.
 UnhaltedUI_Additions.lua
