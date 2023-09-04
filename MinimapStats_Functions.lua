@@ -12,14 +12,14 @@ function FetchTime()
     return TwoFourHourTime
 end
 
-function FetchDate()
+--[[ function FetchDate()
     local CurrentDay = date("%d")
     local CurrentMonth = date("%b")
     local CurrentYear = date("%y")
     local CurrentDate = CurrentDay .. " " .. CurrentMonth .. " " .. CurrentYear
 
     return CurrentDate
-end
+end ]]
 
 
 function FetchLocation()
@@ -113,14 +113,14 @@ function UpdateTimeFrame(TimeFrame, ElapsedTime)
     end
 end
 
-function UpdateDateFrame(DateFrame, FrameEvent)
+--[[ function UpdateDateFrame(DateFrame, FrameEvent)
     if FrameEvent == "PLAYER_ENTERING_WORLD" then
         DateFrameText:SetText(FetchDate())
         if DebugMode then 
             print(AddOnName..": Date Updated")
         end
     end
-end
+end ]]
 
 function UpdateLocationFrame(LocationFrame, FrameEvent)
     if FrameEvent == "ZONE_CHANGED" or FrameEvent == "ZONE_CHANGED_INDOORS" or FrameEvent == "ZONE_CHANGED_NEW_AREA" or FrameEvent == "PLAYER_ENTERING_WORLD" then

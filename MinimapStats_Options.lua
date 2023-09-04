@@ -7,7 +7,7 @@ DebugMode = false
 
 -- [[ Font Sizes ]] --
 TimeFrameFontSize = 16
-DateFrameFontSize = 12
+--DateFrameFontSize = 12
 LocationFrameFontSize = 12
 InformationFrameFontSize = 12
 InstanceDifficultyFrameFontSize = 12
@@ -18,10 +18,11 @@ TimeFrameAnchorTo = "BOTTOM"
 TimeFrameXOffset = 0
 TimeFrameYOffset = 17
 
+--[[ 
 DateFrameAnchorFrom = "BOTTOM"
 DateFrameAnchorTo = "TOP"
 DateFrameXOffset = 0
-DateFrameYOffset = 3
+DateFrameYOffset = 3 ]]
 
 LocationFrameAnchorFrom = "TOP"
 LocationFrameAnchorTo = "TOP"

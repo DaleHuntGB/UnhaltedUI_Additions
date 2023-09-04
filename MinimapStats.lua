@@ -15,7 +15,7 @@ TimeFrame:SetHeight(TimeFrameText:GetStringHeight() or 24)
 TimeFrame:SetWidth(TimeFrameText:GetStringWidth() or 200)
 
 -- [[ Date Frame ]] --
-DateFrame = CreateFrame("Frame", "UH_DateFrame", Minimap)
+--[[ DateFrame = CreateFrame("Frame", "UH_DateFrame", Minimap)
 DateFrame:ClearAllPoints()
 DateFrame:SetPoint(DateFrameAnchorFrom, TimeFrame, DateFrameAnchorTo, DateFrameXOffset, DateFrameYOffset)
 DateFrameText = DateFrame:CreateFontString("UH_DateFrameText", "BACKGROUND")
@@ -25,10 +25,10 @@ DateFrameText:SetFont(Font, DateFrameFontSize, FontOutline)
 DateFrameText:SetTextColor(PrimaryFontColor[1], PrimaryFontColor[2], PrimaryFontColor[3])
 DateFrameText:SetText(FetchDate())
 DateFrame:SetHeight(DateFrameText:GetStringHeight() or 24)
-DateFrame:SetWidth(DateFrameText:GetStringWidth() or 200)
+DateFrame:SetWidth(DateFrameText:GetStringWidth() or 200) ]]
 
 --[[ Date Frame: Event Registeration ]]--
-DateFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+--DateFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 --[[ Location Frame ]]--
 LocationFrame = CreateFrame("Frame", "UH_LocationFrame", Minimap)
@@ -85,8 +85,8 @@ InstanceDifficultyFrame:RegisterEvent("WORLD_STATE_TIMER_START")
 
 --[[ Scripts ]]--
 TimeFrame:SetScript("OnUpdate", UpdateTimeFrame)
-DateFrame:SetScript("OnEvent", UpdateDateFrame)
-DateFrame:SetScript("OnMouseDown", function(self, button) if button == "LeftButton" then ToggleCalendar() end end)
+--[[ DateFrame:SetScript("OnEvent", UpdateDateFrame)
+DateFrame:SetScript("OnMouseDown", function(self, button) if button == "LeftButton" then ToggleCalendar() end end) ]]
 LocationFrame:SetScript("OnEvent", UpdateLocationFrame)
 InformationFrame:SetScript("OnUpdate", UpdateInformationFrame)
 InformationFrame:SetScript("OnMouseDown", function(self, button) if button == "MiddleButton" then ReloadUI() end end)
