@@ -8,7 +8,7 @@ GetAddOnName = C_AddOns.GetAddOnMetadata("MinimapStats", "Title")
 AddOnName = "|cFF8080FF"..GetAddOnName.."|r"
 
 -- [[ Font Sizes ]] --
-TimeFrameFontSize = 21
+TimeFrameFontSize = 16
 DateFrameFontSize = 12
 LocationFrameFontSize = 12
 InformationFrameFontSize = 12
@@ -30,10 +30,10 @@ LocationFrameAnchorTo = "TOP"
 LocationFrameXOffset = 0
 LocationFrameYOffset = -3
 
-InformationFrameAnchorFrom = "BOTTOM"
+InformationFrameAnchorFrom = "TOP"
 InformationFrameAnchorTo = "BOTTOM"
 InformationFrameXOffset = 0
-InformationFrameYOffset = 3
+InformationFrameYOffset = -3
 
 InstanceDifficultyFrameAnchorFrom = "TOPLEFT"
 InstanceDifficultyFrameAnchorTo = "TOPLEFT"
