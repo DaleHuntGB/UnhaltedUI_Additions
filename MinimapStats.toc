@@ -3,8 +3,12 @@
 ## Author: Unhalted
 ## Version: 1.0.0
 
-MinimapStats_Config.lua
-MinimapStats_Options.lua
 MinimapStats_Functions.lua
+MinimapStats_Options.lua
 MinimapStats.lua
 UnhaltedUI_Additions.lua
+
+## Load Files.
+## Load Functions.
+## Load Config.
+## Load AddOn.

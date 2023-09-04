@@ -1,3 +1,6 @@
+local GetAddOnName = C_AddOns.GetAddOnMetadata("MinimapStats", "Title")
+local AddOnName = "|cFF8080FF"..GetAddOnName.."|r"
+
 local TimeFrame_LastUpdate = 0
 local InformationFrame_LastUpdate = 0
 
@@ -24,7 +27,7 @@ function FetchLocation()
 end
 
 function FetchInformation()
-    local FPS = floor(GetFramerate())
+    local FPS = ceil(GetFramerate())
     local _, _, HomeMS, WorldMS = GetNetStats()
 
     local FPSText = FPS .. "|c" .. SecondaryFontColor .. " FPS " .. "|r"
