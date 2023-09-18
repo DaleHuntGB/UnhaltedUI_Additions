@@ -35,4 +35,7 @@ InstanceDifficultyFrameYOffset = -3
 -- [[ Update Frequency ]] --
 TimeFrame_UpdateFrequency = 3 
 InformationFrame_UpdateFrequency = 5
+--[[ InformationFrame_UpdateFrequency_OutOfCombat = 5
+InformationFrame_UpdateFrequency_InCombat = 15 ]]
+
 

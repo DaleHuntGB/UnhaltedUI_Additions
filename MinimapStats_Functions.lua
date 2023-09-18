@@ -112,6 +112,7 @@ function UpdateLocationFrame(LocationFrame, FrameEvent)
     end
 end
 
+-- UpdateInformationFrame 
 function UpdateInformationFrame(InformationFrame, ElapsedTime)
     InformationFrame_LastUpdate = InformationFrame_LastUpdate + ElapsedTime
     if InformationFrame_LastUpdate > InformationFrame_UpdateFrequency then
@@ -123,6 +124,22 @@ function UpdateInformationFrame(InformationFrame, ElapsedTime)
     end
 end
 
+--[[ function UpdateInformationFrame(InformationFrame, FrameEvent)
+    if FrameEvent == "PLAYER_REGEN_ENABLED" or FrameEvent == "ENCOUNTER_END" or FrameEvent == "PLAYER_ENTERING_WORLD" then
+        if UpdateInformationInCombat ~= nil then
+            UpdateInformationInCombat:Cancel()
+        end
+        UpdateInformationOutOfCombat = C_Timer.NewTicker(InformationFrame_UpdateFrequency_OutOfCombat, function() InformationFrameText:SetText(FetchInformation()) end)
+    end
+
+    if FrameEvent == "PLAYER_REGEN_DISABLED" or FrameEvent == "ENCOUNTER_START" then
+        if UpdateInformationOutOfCombat ~= nil then
+            UpdateInformationOutOfCombat:Cancel()
+        end
+        UpdateInformationInCombat = C_Timer.NewTicker(InformationFrame_UpdateFrequency_InCombat, function() InformationFrameText:SetText(FetchInformation()) end)
+    end
+end ]]
+
 function UpdateInstanceDifficultyFrame(InstanceDifficultyFrame, FrameEvent)
     if FrameEvent == "ZONE_CHANGED" or FrameEvent == "ZONE_CHANGED_INDOORS" or FrameEvent == "ZONE_CHANGED_NEW_AREA" or FrameEvent == "PLAYER_ENTERING_WORLD" or FrameEvent == "GROUP_ROSTER_UPDATE" or FrameEvent == "WORLD_STATE_TIME_START" then
         InstanceDifficultyFrameText:SetText(FetchInstanceDifficulty())
@@ -131,3 +148,4 @@ function UpdateInstanceDifficultyFrame(InstanceDifficultyFrame, FrameEvent)
         end
     end
 end
+

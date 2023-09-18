@@ -47,6 +47,13 @@ InformationFrameText:SetText(FetchInformation())
 InformationFrame:SetHeight(InformationFrameText:GetStringHeight() or 24)
 InformationFrame:SetWidth(InformationFrameText:GetStringWidth() or 200)
 
+--[[ Information Frame: Event Registeration ]]--
+InformationFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+InformationFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
+InformationFrame:RegisterEvent("ENCOUNTER_START")
+InformationFrame:RegisterEvent("ENCOUNTER_END")
+InformationFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+
 --[[ Instance Difficulty Frame ]]--
 InstanceDifficultyFrame = CreateFrame("Frame", "UH_InstanceDifficultyFrame", Minimap)
 InstanceDifficultyFrame:ClearAllPoints()
@@ -71,5 +78,6 @@ InstanceDifficultyFrame:RegisterEvent("WORLD_STATE_TIMER_START")
 TimeFrame:SetScript("OnUpdate", UpdateTimeFrame)
 LocationFrame:SetScript("OnEvent", UpdateLocationFrame)
 InformationFrame:SetScript("OnUpdate", UpdateInformationFrame)
+--[[ InformationFrame:SetScript("OnEvent", UpdateInformationFrame) ]]
 InformationFrame:SetScript("OnMouseDown", function(self, button) if button == "MiddleButton" then ReloadUI() end end)
 InstanceDifficultyFrame:SetScript("OnEvent", UpdateInstanceDifficultyFrame)
