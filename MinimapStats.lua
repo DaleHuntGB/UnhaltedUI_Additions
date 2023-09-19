@@ -76,6 +76,7 @@ InstanceDifficultyFrame:RegisterEvent("WORLD_STATE_TIMER_START")
 
 --[[ Scripts ]]--
 TimeFrame:SetScript("OnUpdate", UpdateTimeFrame)
+TimeFrame:SetScript("OnMouseDown", function(self, button) if button == "LeftButton" then ToggleCalendar() end end)
 LocationFrame:SetScript("OnEvent", UpdateLocationFrame)
 InformationFrame:SetScript("OnUpdate", UpdateInformationFrame)
 --[[ InformationFrame:SetScript("OnEvent", UpdateInformationFrame) ]]
