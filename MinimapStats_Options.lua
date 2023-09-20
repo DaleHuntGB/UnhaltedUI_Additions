@@ -41,9 +41,6 @@ InformationFrame_UpdateFrequency_InCombat = 15 ]]
 -- [[ UnhaltedUI Options ]] --
 HideTalkingHeadFrame = true 
 HideBossBannerFrame = true
-AutoVendorGreys = true
-AutoSelectGossip = true
-AutoQuests = true
 SkipCinematics = true
 
 
