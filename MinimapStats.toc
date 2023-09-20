@@ -1,5 +1,5 @@
 ## Title: |cFF8080FFMinimapStats|r
-## Interface: 100105
+## Interface: 100107
 ## Author: Unhalted
 ## Version: 1.0.0
 
