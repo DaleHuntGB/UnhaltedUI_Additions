@@ -12,3 +12,14 @@ end
 -- [[ Skip Cinematics ]] --
 MovieFrame_PlayMovie = function(...) GameMovieFinished() print("|cFF8080FFCinematic Skipped|r") end
 CinematicFrame:HookScript("OnShow", function(self, ...)	CinematicFrame_CancelCinematic() print("|cFF8080FFUnhaltedUI Additions|r: Cinematic Skipped") end)
+
+-- [[ Faster Auto Loot ]] --
+local AutoLootPlus = CreateFrame("Frame")
+AutoLootPlus:RegisterEvent("LOOT_READY")
+AutoLootPlus:SetScript("OnEvent", function()
+	if GetCVarBool("autoLootDefault") ~= IsModifiedClick("AUTOLOOTTOGGLE") then
+		for i = GetNumLootItems(), 1, -1 do
+			LootSlot(i)
+		end
+	end
+end)
