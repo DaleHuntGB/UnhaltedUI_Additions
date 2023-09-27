@@ -38,9 +38,4 @@ InformationFrame_UpdateFrequency = 5
 --[[ InformationFrame_UpdateFrequency_OutOfCombat = 5
 InformationFrame_UpdateFrequency_InCombat = 15 ]]
 
--- [[ UnhaltedUI Options ]] --
-HideTalkingHeadFrame = true 
-HideBossBannerFrame = true
-SkipCinematics = true
-
 
