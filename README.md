@@ -1,4 +1,0 @@
-# MinimapStats
-
-# Developed by Unhalted
-
