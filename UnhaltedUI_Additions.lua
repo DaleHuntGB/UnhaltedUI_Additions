@@ -1,5 +1,7 @@
 local UnhaltedUI_Additions = CreateFrame("Frame")
 local UH = {}
+local _, class = UnitClass("player")
+local classColor = RAID_CLASS_COLORS[class]
 UnhaltedUI_Additions:RegisterEvent("PLAYER_LOGIN")
 UnhaltedUI_Additions:RegisterEvent("ADDON_LOADED")
 UnhaltedUI_Additions:SetScript("OnEvent", function(self, event, ...) if event == "PLAYER_LOGIN" then UH:CreateUI() end end)
@@ -100,6 +102,20 @@ function UH:ImproveBlizzardUI()
     ActionStatus.Text:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
     ActionStatus.Text:SetShadowOffset(0, 0)
     ActionStatus.Text:SetShadowColor(0, 0, 0, 0)
+    CharacterStatsPane.ItemLevelCategory.Title:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+    CharacterStatsPane.ItemLevelCategory.Title:SetShadowOffset(0, 0)
+    CharacterStatsPane.ItemLevelCategory.Title:SetShadowColor(0, 0, 0, 0)
+    CharacterStatsPane.ItemLevelCategory.Title:SetTextColor(classColor.r, classColor.g, classColor.b, 1.0)
+    CharacterStatsPane.ItemLevelFrame.Value:SetAlpha(0)
+    CharacterStatsPane.ItemLevelFrame.Background:SetAlpha(0)
+    CharacterStatsPane.AttributesCategory.Title:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+    CharacterStatsPane.AttributesCategory.Title:SetShadowOffset(0, 0)
+    CharacterStatsPane.AttributesCategory.Title:SetShadowColor(0, 0, 0, 0)
+    CharacterStatsPane.AttributesCategory.Title:SetTextColor(classColor.r, classColor.g, classColor.b, 1.0)
+    CharacterStatsPane.EnhancementsCategory.Title:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+    CharacterStatsPane.EnhancementsCategory.Title:SetShadowOffset(0, 0)
+    CharacterStatsPane.EnhancementsCategory.Title:SetShadowColor(0, 0, 0, 0)
+    CharacterStatsPane.EnhancementsCategory.Title:SetTextColor(classColor.r, classColor.g, classColor.b, 1.0)
 end
 SLASH_SHOWBARS1 = "/bars"
 SlashCmdList["SHOWBARS"] = function() if C_AddOns.IsAddOnLoaded("Bartender4") then local function t(n) Bartender4.Bar.barregistry[n]:SetVisibilityOption("always",not Bartender4.Bar.barregistry[n]:GetVisibilityOption("always")) end t("1") t("2") t("3") t("4") end end
