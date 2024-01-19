@@ -97,6 +97,9 @@ function UH:ImproveBlizzardUI()
     ChatBubbleFont:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE")
     ChatBubbleFont:SetShadowOffset(0, 0)
     ChatBubbleFont:SetShadowColor(0, 0, 0, 0)
+    ActionStatus.Text:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+    ActionStatus.Text:SetShadowOffset(0, 0)
+    ActionStatus.Text:SetShadowColor(0, 0, 0, 0)
 end
 SLASH_SHOWBARS1 = "/bars"
 SlashCmdList["SHOWBARS"] = function() if C_AddOns.IsAddOnLoaded("Bartender4") then local function t(n) Bartender4.Bar.barregistry[n]:SetVisibilityOption("always",not Bartender4.Bar.barregistry[n]:GetVisibilityOption("always")) end t("1") t("2") t("3") t("4") end end
