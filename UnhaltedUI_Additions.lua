@@ -1,77 +1,4 @@
-local UnhaltedUI_Additions = CreateFrame("Frame")
-local UH = {}
-local _, class = UnitClass("player")
-local classColor = RAID_CLASS_COLORS[class]
-local UHNormal = "Fonts\\FRIZQT__.TTF"
-UnhaltedUI_Additions:RegisterEvent("PLAYER_LOGIN")
-UnhaltedUI_Additions:RegisterEvent("ADDON_LOADED")
-UnhaltedUI_Additions:SetScript("OnEvent", function(self, event, ...) if event == "PLAYER_LOGIN" then UH:CreateUI() end end)
-function UH:CreateBackdrops()
-    if C_AddOns.IsAddOnLoaded("Details") then
-        local DDMBackdrop = CreateFrame("Frame", "DDMBackdrop", UIParent, "BackdropTemplate")
-        DDMBackdrop:SetFrameStrata("LOW")
-        DDMBackdrop:SetWidth(227)
-        DDMBackdrop:SetHeight(201)
-        DDMBackdrop:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -1, 1)
-        DDMBackdrop:SetBackdrop({
-            bgFile = "Interface\\Buttons\\WHITE8x8",
-            edgeFile = "Interface\\Buttons\\WHITE8x8",
-            tile = true, tileSize = 1, edgeSize = 1,
-            insets = { left = 0, right = 0, top = 0, bottom = 0 }
-        })
-        DDMBackdrop:SetBackdropColor(20/255, 20/255, 20/255, 1.0)
-        DDMBackdrop:SetBackdropBorderColor(0, 0, 0, 1.0)
-        local DHMBackdrop = CreateFrame("Frame", "DHMBackdrop", UIParent, "BackdropTemplate")
-        DHMBackdrop:SetFrameStrata("LOW")
-        DHMBackdrop:SetWidth(226)
-        DHMBackdrop:SetHeight(201)
-        DHMBackdrop:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -229, 1)
-        DHMBackdrop:SetBackdrop({
-            bgFile = "Interface\\Buttons\\WHITE8x8",
-            edgeFile = "Interface\\Buttons\\WHITE8x8",
-            tile = true, tileSize = 1, edgeSize = 1,
-            insets = { left = 0, right = 0, top = 0, bottom = 0 }
-        })
-        DHMBackdrop:SetBackdropColor(20/255, 20/255, 20/255, 1.0)
-        DHMBackdrop:SetBackdropBorderColor(0, 0, 0, 1.0)
-    end
-    if C_AddOns.IsAddOnLoaded("Prat-3.0") then
-        local PratBackdrop = CreateFrame("Frame", "PratBackdrop", UIParent, "BackdropTemplate")
-        PratBackdrop:SetFrameStrata("LOW")
-        PratBackdrop:SetWidth(454)
-        PratBackdrop:SetHeight(201)
-        PratBackdrop:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 1, 1)
-        PratBackdrop:SetBackdrop({
-            bgFile = "Interface\\Buttons\\WHITE8x8",
-            edgeFile = "Interface\\Buttons\\WHITE8x8",
-            tile = true, tileSize = 1, edgeSize = 1,
-            insets = { left = 0, right = 0, top = 0, bottom = 0 }
-        })
-        PratBackdrop:SetBackdropColor(20/255, 20/255, 20/255, 1.0)
-        PratBackdrop:SetBackdropBorderColor(0, 0, 0, 1.0)
-        for i=1,NUM_CHAT_WINDOWS do 
-            local ChatFrameScrollBar = _G["ChatFrame"..i].ScrollBar ChatFrameScrollBar:UnregisterAllEvents() ChatFrameScrollBar:SetScript("OnShow", ChatFrameScrollBar.Hide) ChatFrameScrollBar:Hide();
-            local ChatTab = _G["ChatFrame"..i.."Tab"]
-            local ChatFrame = ("ChatFrame%d"):format(i)
-            local ChatFrames = _G[ChatFrame]
-            ChatFrames:SetShadowColor(0, 0, 0, 0)
-            ChatTab:Hide()
-            ChatTab.Show = ChatTab.Hide
-        end
-        C_Timer.After(0.1, function() ChatFrame1EditBox:ClearAllPoints() ChatFrame1EditBox:SetPoint("TOPLEFT", PratBackdrop, "TOPLEFT", 2, -2) ChatFrame1EditBox:SetWidth(450) end)
-    end
-end
-function UH:AutoLootPlus()
-    local AutoLootPlus = CreateFrame("Frame")
-    AutoLootPlus:RegisterEvent("LOOT_READY")
-    AutoLootPlus:SetScript("OnEvent", function()
-        if GetCVarBool("autoLootDefault") ~= IsModifiedClick("AUTOLOOTTOGGLE") then
-            for i = GetNumLootItems(), 1, -1 do
-                LootSlot(i)
-            end
-        end
-    end)
-end
+
 function UH:SetFont(obj, font, size, style, sR, sG, sB, sA, sX, sY, r, g, b, a)
 	if not obj then return end
 	if style == 'NONE' or not style then style = '' end
@@ -148,8 +75,6 @@ UH:SetFont(GameFontHighlightSmall2, UHNormal, 12, "OUTLINE", 0, 0, 0, 0, 0, 0, n
 end
 SLASH_SHOWBARS1 = "/bars"
 SlashCmdList["SHOWBARS"] = function() if C_AddOns.IsAddOnLoaded("Bartender4") then local function t(n) Bartender4.Bar.barregistry[n]:SetVisibilityOption("always",not Bartender4.Bar.barregistry[n]:GetVisibilityOption("always")) end t("1") t("2") t("3") t("4") end end
-
--- Define a function for the custom slash command
 local function MyPrintCommand(msg)
     -- Execute the provided Lua code
     local result = assert(loadstring("return " .. msg))()
@@ -159,15 +84,73 @@ local function MyPrintCommand(msg)
         DEFAULT_CHAT_FRAME:AddMessage(tostring(result))
     end
 end
-
--- Register the slash command with its function
 SLASH_MYPRINT1 = "/print"
 SlashCmdList["MYPRINT"] = MyPrintCommand
 
-
-
 function UH:CreateUI()
-    UH:CreateBackdrops()
+    UH:UpdateUI()
     UH:AutoLootPlus()
     UH:ImproveBlizzardUI()
 end
+
+function UH:UpdateUI()
+    print("Updating UI")
+    if C_AddOns.IsAddOnLoaded("Details") then
+        if UH.db.global.DrawDetailsBackdrops == true then
+            local DDMBackdrop = CreateFrame("Frame", "DDMBackdrop", UIParent, "BackdropTemplate")
+            DDMBackdrop:SetFrameStrata("LOW")
+            DDMBackdrop:SetWidth(UH.db.global.DetailsDamageMeterW)
+            DDMBackdrop:SetHeight(UH.db.global.DetailsDamageMeterH)
+            DDMBackdrop:SetPoint(UH.db.global.DetailsDamageMeterAnchor, UIParent, UH.db.global.DetailsDamageMeterAnchor, UH.db.global.DetailsDamageMeterX, UH.db.global.DetailsDamageMeterY)
+            DDMBackdrop:SetBackdrop({
+                bgFile = "Interface\\Buttons\\WHITE8x8",
+                edgeFile = "Interface\\Buttons\\WHITE8x8",
+                tile = true, tileSize = 1, edgeSize = 1,
+                insets = { left = 0, right = 0, top = 0, bottom = 0 }
+            })
+            DDMBackdrop:SetBackdropColor(UH.db.global.DetailsDamageMeterColor.r, UH.db.global.DetailsDamageMeterColor.g, UH.db.global.DetailsDamageMeterColor.b, UH.db.global.DetailsDamageMeterColor.a)
+            DDMBackdrop:SetBackdropBorderColor(0, 0, 0, 1.0)
+            local DHMBackdrop = CreateFrame("Frame", "DHMBackdrop", UIParent, "BackdropTemplate")
+            DHMBackdrop:SetFrameStrata("LOW")
+            DHMBackdrop:SetWidth(UH.db.global.DetailsHealingMeterW)
+            DHMBackdrop:SetHeight(UH.db.global.DetailsHealingMeterH)
+            DHMBackdrop:SetPoint(UH.db.global.DetailsHealingMeterAnchor, UIParent, UH.db.global.DetailsHealingMeterAnchor, UH.db.global.DetailsHealingMeterX, UH.db.global.DetailsHealingMeterY)
+            DHMBackdrop:SetBackdrop({
+                bgFile = "Interface\\Buttons\\WHITE8x8",
+                edgeFile = "Interface\\Buttons\\WHITE8x8",
+                tile = true, tileSize = 1, edgeSize = 1,
+                insets = { left = 0, right = 0, top = 0, bottom = 0 }
+            })
+            DHMBackdrop:SetBackdropColor(UH.db.global.DetailsHealingMeterColor.r, UH.db.global.DetailsHealingMeterColor.g, UH.db.global.DetailsHealingMeterColor.b, UH.db.global.DetailsHealingMeterColor.a)
+            DHMBackdrop:SetBackdropBorderColor(0, 0, 0, 1.0)
+        end
+    end
+    if C_AddOns.IsAddOnLoaded("Prat-3.0") then
+        local PratBackdrop = CreateFrame("Frame", "PratBackdrop", UIParent, "BackdropTemplate")
+        PratBackdrop:SetFrameStrata("LOW")
+        PratBackdrop:SetWidth(UH.db.global.ChatBackdropW)
+        PratBackdrop:SetHeight(UH.db.global.ChatBackdropH)
+        PratBackdrop:SetPoint(UH.db.global.ChatBackdropAnchor, UIParent, UH.db.global.ChatBackdropAnchor, UH.db.global.ChatBackdropX, UH.db.global.ChatBackdropY)
+        PratBackdrop:SetBackdrop({
+            bgFile = "Interface\\Buttons\\WHITE8x8",
+            edgeFile = "Interface\\Buttons\\WHITE8x8",
+            tile = true, tileSize = 1, edgeSize = 1,
+            insets = { left = 0, right = 0, top = 0, bottom = 0 }
+        })
+        PratBackdrop:SetBackdropColor(UH.db.global.ChatBackdropColor.r, UH.db.global.ChatBackdropColor.g, UH.db.global.ChatBackdropColor.b, UH.db.global.ChatBackdropColor.a)
+        PratBackdrop:SetBackdropBorderColor(0, 0, 0, 1.0)
+        for i=1,NUM_CHAT_WINDOWS do 
+            local ChatFrameScrollBar = _G["ChatFrame"..i].ScrollBar ChatFrameScrollBar:UnregisterAllEvents() ChatFrameScrollBar:SetScript("OnShow", ChatFrameScrollBar.Hide) ChatFrameScrollBar:Hide();
+            local ChatTab = _G["ChatFrame"..i.."Tab"]
+            local ChatFrame = ("ChatFrame%d"):format(i)
+            local ChatFrames = _G[ChatFrame]
+            ChatFrames:SetShadowColor(0, 0, 0, 0)
+            ChatTab:Hide()
+            ChatTab.Show = ChatTab.Hide
+        end
+        C_Timer.After(0.1, function() ChatFrame1EditBox:ClearAllPoints() ChatFrame1EditBox:SetPoint("TOPLEFT", PratBackdrop, "TOPLEFT", 2, -2) ChatFrame1EditBox:SetWidth(UH.db.global.ChatBackdropW - 4) end)
+    end
+end
+-- Create a slash command to open the options panel
+SLASH_UNHALTEDUI_ADDITIONS1 = "/uh"
+SlashCmdList["UNHALTEDUI_ADDITIONS"] = function() InterfaceOptionsFrame_OpenToCategory("UnhaltedUI_Additions") end

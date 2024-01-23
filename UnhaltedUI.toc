@@ -1,0 +1,6 @@
+## Title: |cFF8080FFUnhaltedUI|r
+## Version: 1.0.0
+## Author: Unhalted
+## IconAtlas: mechagon-projects
+## SavedVariables: UnhaltedUIDB
+UnhaltedUI.lua
