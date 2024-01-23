@@ -141,6 +141,9 @@ UH:SetFont(SystemFont_Huge2, UHNormal, 20, "OUTLINE", 0, 0, 0, 0, 0, 0, nil, nil
 UH:SetFont(GameFontNormalMed3, UHNormal, 14, "OUTLINE", 0, 0, 0, 0, 0, 0, nil, nil, nil, nil)
 UH:SetFont(BossEmoteNormalHuge, UHNormal, 20, "OUTLINE", 0, 0, 0, 0, 0, 0, nil, nil, nil, nil)
 UH:SetFont(SystemFont16_Shadow_ThickOutline, UHNormal, 16, "OUTLINE", 0, 0, 0, 0, 0, 0, nil, nil, nil, nil)
+UH:SetFont(FriendsFont_11, UHNormal, 11, "OUTLINE", 0, 0, 0, 0, 0, 0, nil, nil, nil, nil)
+UH:SetFont(FriendsFont_UserText, UHNormal, 11, "OUTLINE", 0, 0, 0, 0, 0, 0, nil, nil, nil, nil)
+UH:SetFont(GameFontHighlightSmall2, UHNormal, 12, "OUTLINE", 0, 0, 0, 0, 0, 0, nil, nil, nil, nil)
 
 end
 SLASH_SHOWBARS1 = "/bars"
