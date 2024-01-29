@@ -3,4 +3,7 @@
 ## Author: Unhalted
 ## IconAtlas: mechagon-projects
 ## SavedVariables: UnhaltedUIDB
+
+Libs\Embeds.xml
+Bindings.lua
 UnhaltedUI.lua
